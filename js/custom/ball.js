@@ -110,20 +110,31 @@ Ball.prototype.move = function () {
     }
 
     // persists the ball
-    this.ballRef.set({ x: this.x, y: this.y, previousX: this.previousX, previousY: this.previousY });
+    this.ballRef.set({
+        x: this.x,
+        y: this.y,
+        previousX: this.previousX,
+        previousY: this.previousY
+    });
 };
 
 // draws ball when its position changes
 Ball.prototype.drawAtNewPosition = function (ballRef) {
 
     // erases previous position of the ball
-    this.game.context.fillStyle = this.game.context.fillStyle = this.game.scoreLayer.fillStyleOfPoint(ballRef.previousX, ballRef.previousY);
-    this.game.context.fillRect(ballRef.previousX * this.game.drawBlockSize, ballRef.previousY * this.game.drawBlockSize, this.game.drawBlockSize, this.game.drawBlockSize);
+    this.game.context.fillStyle = this.game.scoreLayer.fillStyleOfPoint(ballRef.previousX, ballRef.previousY);
+    this.game.context.fillRect(ballRef.previousX * this.game.drawBlockSize,
+                                ballRef.previousY * this.game.drawBlockSize,
+                                this.game.drawBlockSize,
+                                this.game.drawBlockSize);
 
     if (this.game.isGameOn === true) {
         // draws new position of the ball
         this.game.context.fillStyle = 'white';
-        this.game.context.fillRect(ballRef.x * this.game.drawBlockSize, ballRef.y * this.game.drawBlockSize, this.game.drawBlockSize, this.game.drawBlockSize);
+        this.game.context.fillRect(ballRef.x * this.game.drawBlockSize,
+                                    ballRef.y * this.game.drawBlockSize,
+                                    this.game.drawBlockSize,
+                                    this.game.drawBlockSize);
     }
 
 };
