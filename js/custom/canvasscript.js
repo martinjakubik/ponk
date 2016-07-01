@@ -1,31 +1,31 @@
 function drawScript(oCanvas, x, y, character, drawingLayer, drawBlockSize) {
     this.context = oCanvas.getContext('2d');
 
-    var drawX = x;
-    var drawY = y;
-    var pixel = 0;
+    var nDrawX = x;
+    var nDrawY = y;
+    var nPixel = 0;
     var nX = 0, nY = 0;
 
     // checks if char is a number
     if (!isNaN(parseInt(character, 10))) {
         // draws the number
-        for(pixel = 0 ; pixel < d3x5[0].length ; pixel++) {
-            nX = pixel % 3;
-            nY = Math.floor(pixel / 3);
-            if (d3x5[ character ][ pixel ] === '*') {
+        for (nPixel = 0; nPixel < d3x5[0].length; nPixel++) {
+            nX = nPixel % 3;
+            nY = Math.floor(nPixel / 3);
+            if (d3x5[ character ][ nPixel ] === '*') {
                 // draws a filled square
                 this.context.fillStyle = '#ffffff';
-                this.context.fillRect((drawX + nX) * drawBlockSize, (drawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
+                this.context.fillRect((nDrawX + nX) * drawBlockSize, (nDrawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
 
                 // stores a filled square at this position
-                drawingLayer.grid[(drawX + nX)][(drawY + nY)] = '#ffffff';
+                drawingLayer.grid[(nDrawX + nX)][(nDrawY + nY)] = '#ffffff';
             } else {
                 // draws a clear square
                 this.context.fillStyle = 'black';
-                this.context.fillRect((drawX + nX) * drawBlockSize, (drawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
+                this.context.fillRect((nDrawX + nX) * drawBlockSize, (nDrawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
 
                 // stores a clear square at this position
-                drawingLayer.grid[(drawX + nX)][(drawY + nY)] = 'black';
+                drawingLayer.grid[(nDrawX + nX)][(nDrawY + nY)] = 'black';
             }
         }
     } else {
@@ -35,31 +35,32 @@ function drawScript(oCanvas, x, y, character, drawingLayer, drawBlockSize) {
         var nLetterIndex = nCharCode - 97;
 
         // draws the letter
-        for(pixel = 0 ; pixel < s3x5[ 0 ].length ; pixel++) {
-            nX = pixel % 3;
-            nY = Math.floor(pixel / 3);
+        for (nPixel = 0; nPixel < s3x5[ 0 ].length; nPixel++) {
+            nX = nPixel % 3;
+            nY = Math.floor(nPixel / 3);
 
-            if (s3x5[ nLetterIndex ][ pixel ] === '*') {
+            if (s3x5[ nLetterIndex ][ nPixel ] === '*') {
                 // draws a filled square
                 this.context.fillStyle = '#ffffff';
-                this.context.fillRect((drawX + nX) * drawBlockSize, (drawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
+                this.context.fillRect((nDrawX + nX) * drawBlockSize, (nDrawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
 
                 // stores a filled square at this position
-                drawingLayer.grid[(drawX + nX)][(drawY + nY)] = '#ffffff';
+                drawingLayer.grid[(nDrawX + nX)][(nDrawY + nY)] = '#ffffff';
             } else {
                 // draws a clear square
                 this.context.fillStyle = 'black';
-                this.context.fillRect((drawX + nX) * drawBlockSize, (drawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
+                this.context.fillRect((nDrawX + nX) * drawBlockSize, (nDrawY + nY) * drawBlockSize, drawBlockSize, drawBlockSize);
 
                 // stores a clear square at this position
-                drawingLayer.grid[(drawX + nX)][(drawY + nY)] = 'black';
+                drawingLayer.grid[(nDrawX + nX)][(nDrawY + nY)] = 'black';
             }
         }
     }
 }
 
 var s3x5 = [
-    s3x5_acap = [
+    // A
+    [
         ' ', '*', ' ',
         '*', ' ', '*',
         '*', '*', '*',
@@ -67,7 +68,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_bcap = [
+    // B
+    [
         '*', '*', ' ',
         '*', ' ', '*',
         '*', '*', ' ',
@@ -75,7 +77,8 @@ var s3x5 = [
         '*', '*', ' '
     ],
 
-    s3x5_ccap = [
+    // C
+    [
         ' ', '*', ' ',
         '*', ' ', '*',
         '*', ' ', ' ',
@@ -83,7 +86,8 @@ var s3x5 = [
         ' ', '*', ' '
     ],
 
-    s3x5_dcap = [
+    // D
+    [
         '*', '*', ' ',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -91,7 +95,8 @@ var s3x5 = [
         '*', '*', ' '
     ],
 
-    s3x5_ecap = [
+    // E
+    [
         '*', '*', '*',
         '*', ' ', ' ',
         '*', '*', ' ',
@@ -99,7 +104,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_fcap = [
+    // F
+    [
         '*', '*', '*',
         '*', ' ', ' ',
         '*', '*', ' ',
@@ -107,7 +113,8 @@ var s3x5 = [
         '*', ' ', ' '
     ],
 
-    s3x5_gcap = [
+    // G
+    [
         '*', '*', '*',
         '*', ' ', ' ',
         '*', ' ', '*',
@@ -115,7 +122,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_hcap = [
+    // H
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         '*', '*', '*',
@@ -123,7 +131,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_icap = [
+    // I
+    [
         '*', '*', '*',
         ' ', '*', ' ',
         ' ', '*', ' ',
@@ -131,7 +140,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_jcap = [
+    // J
+    [
         '*', '*', '*',
         ' ', '*', ' ',
         ' ', '*', ' ',
@@ -139,15 +149,17 @@ var s3x5 = [
         '*', '*', ' '
     ],
 
-    s3x5_kcap = [
+    // K
+    [
         '*', ' ', '*',
         '*', '*', ' ',
         '*', '*', ' ',
         '*', '*', ' ',
         '*', ' ', '*'
-  ],
+    ],
 
-    s3x5_lcap = [
+    // L
+    [
         '*', ' ', ' ',
         '*', ' ', ' ',
         '*', ' ', ' ',
@@ -155,7 +167,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_mcap = [
+    // M
+    [
         '*', ' ', '*',
         '*', '*', '*',
         '*', ' ', '*',
@@ -163,7 +176,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_ncap = [
+    // N
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         '*', '*', '*',
@@ -171,7 +185,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_ocap = [
+    // O
+    [
         '*', '*', '*',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -179,7 +194,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_pcap = [
+    // P
+    [
         '*', '*', '*',
         '*', ' ', '*',
         '*', '*', '*',
@@ -187,7 +203,8 @@ var s3x5 = [
         '*', ' ', ' '
     ],
 
-    s3x5_qcap = [
+    // Q
+    [
         '*', '*', '*',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -195,7 +212,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_rcap = [
+    // R
+    [
         '*', '*', '*',
         '*', ' ', '*',
         '*', '*', '*',
@@ -203,7 +221,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_scap = [
+    // S
+    [
         '*', '*', '*',
         '*', ' ', ' ',
         '*', '*', '*',
@@ -211,7 +230,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_tcap = [
+    // T
+    [
         '*', '*', '*',
         ' ', '*', ' ',
         ' ', '*', ' ',
@@ -219,7 +239,8 @@ var s3x5 = [
         ' ', '*', ' '
     ],
 
-    s3x5_ucap = [
+    // U
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -227,7 +248,8 @@ var s3x5 = [
         '*', '*', '*'
     ],
 
-    s3x5_vcap = [
+    // V
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -235,7 +257,8 @@ var s3x5 = [
         ' ', '*', ' '
     ],
 
-    s3x5_wcap = [
+    // W
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         '*', ' ', '*',
@@ -243,7 +266,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_xcap = [
+    // X
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         ' ', '*', ' ',
@@ -251,7 +275,8 @@ var s3x5 = [
         '*', ' ', '*'
     ],
 
-    s3x5_ycap = [
+    // Y
+    [
         '*', ' ', '*',
         '*', ' ', '*',
         ' ', '*', ' ',
@@ -259,14 +284,15 @@ var s3x5 = [
         ' ', '*', ' '
     ],
 
-    s3x5_zcap = [
+    // Z
+    [
         '*', '*', '*',
         ' ', ' ', '*',
         ' ', '*', ' ',
         '*', ' ', ' ',
         '*', '*', '*'
     ]
-]
+];
 
 var d3x5 = [
 
