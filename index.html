@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ponk</title>
+    <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <link rel='stylesheet' type='text/css' href='style/screen-layout.css'></link>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="resources/sap-ui-core.js"
+            id="sap-ui-bootstrap"
+                    data-sap-ui-libs="sap.m"
+                    data-sap-ui-theme="sap_bluecrystal">
+    </script>
+
+    <script>
+                    sap.ui.localResources("view");
+                    var app = new sap.m.App({initialPage:"idView1"});
+                    var page = sap.ui.view({id:"idView1", viewName:"view.ponk", type:sap.ui.core.mvc.ViewType.JS});
+                    app.addPage(page);
+                    app.placeAt("content");
+    </script>
+  </head>
+  
+  <body class="sapUiBody" role="application">
+  
+  
+    <audio id="pok" src="pok.wav" preload="auto"></audio>
+    <audio id="miss" src="sup.wav" preload="auto"></audio>
+    <audio id="vic" src="vic.wav" preload="auto"></audio>
+    
+    <div id="content">
+      <canvas id="board" width="432" height="432"></canvas>
+
+      <!-- data-main attribute tells require.js to load
+           js/custom/ponk.js after require.js loads. -->
+      <script data-main="js/custom/ponk" src="js/require.js"></script>
+    </div>
+  </body>
+
+</html>
+
